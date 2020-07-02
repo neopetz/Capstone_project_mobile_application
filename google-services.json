@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "530527738114",
+    "firebase_url": "https://ledswitch-53461.firebaseio.com",
+    "project_id": "ledswitch-53461",
+    "storage_bucket": "ledswitch-53461.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:530527738114:android:9a46c128f5df2584308a1b",
+        "android_client_info": {
+          "package_name": "com.jaysonjose.led"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "530527738114-rh9a8vf7pmfe3a97i8f9ul6le1e90933.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jaysonjose.led",
+            "certificate_hash": "b39e6976898be76311ad5f51e7c66ef7e980127b"
+          }
+        },
+        {
+          "client_id": "530527738114-su3268pdse98ghk1d0dc4a20314vmv9g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHZ-TNGrptMyhWKP0y9QVR1dQ5YmLmEWk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "530527738114-su3268pdse98ghk1d0dc4a20314vmv9g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

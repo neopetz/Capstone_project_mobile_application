@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+ <EditText
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:id="@+id/input"
+     android:hint="Enter Data"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/input2"
+        android:layout_below="@+id/input"
+        android:hint="Enter Data 2"/>
+
+    <Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="SEND DATA"
+    android:layout_below="@+id/input2"
+    android:id="@+id/btn"
+    />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NEXT"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btnNext"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="UPDATE DATA"
+        android:layout_below="@+id/btnRead"
+        android:id="@+id/btnUpdate"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="READ DATA"
+        android:layout_below="@+id/btn"
+        android:id="@+id/btnRead"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="nothing to show"
+        android:textSize="20sp"
+        android:id="@+id/textView"
+        android:layout_below="@+id/btnUpdate"/>
+     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="nothing 2"
+        android:textSize="20sp"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView"/>
+</RelativeLayout>
