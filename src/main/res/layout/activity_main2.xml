@@ -1,103 +1,455 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     tools:context=".MainActivity2">
 
     <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="50dp"
-        android:visibility="visible"
-        android:src="@drawable/off"
-        android:id="@+id/off"
-        android:layout_marginStart="50dp" />
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="50dp"
-        android:visibility="gone"
-        android:src="@drawable/on"
-        android:id="@+id/on"
-        android:layout_marginStart="50dp" />
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="250dp"
-        android:visibility="visible"
-        android:src="@drawable/off"
-        android:id="@+id/offFan"
-        android:layout_marginStart="250dp" />
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="250dp"
-        android:visibility="gone"
-        android:src="@drawable/on"
-        android:id="@+id/onFan"
-        android:layout_marginStart="250dp" />
+        android:id="@+id/settingPic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/setting"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/setting"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"/>
+
     <TextView
+        android:id="@+id/settingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:id="@+id/label"
-        android:text="OFF"
-        android:layout_marginTop="150dp"
-        android:layout_marginLeft="63dp"
-        android:layout_marginStart="63dp" />
+        android:text="@string/setting"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:layout_below="@+id/settingPic"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
+
+    <ImageView
+        android:id="@+id/accountPic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/account"
+        android:layout_below="@+id/settingText"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/account"
+        android:layout_marginTop="20dp" />
+
     <TextView
+        android:id="@+id/accountText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="40sp"
-        android:id="@+id/label2"
-        android:text="OFF"
-        android:layout_marginTop="150dp"
-        android:layout_marginLeft="265dp"
-        android:layout_marginStart="265dp" />
+        android:text="@string/account"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:layout_below="@+id/accountPic"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textAlignment="center"
+        android:gravity="center_horizontal" />
+
+    <ImageView
+        android:id="@+id/aboutPic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/about"
+        android:layout_below="@+id/accountText"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:contentDescription="@string/about"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/aboutText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:layout_below="@+id/aboutPic"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"/>
+
+    <ImageView
+        android:id="@+id/homePic"
+        android:layout_width="400dp"
+        android:layout_height="220dp"
+        android:src="@drawable/home"
+        android:layout_toRightOf="@+id/aboutPic"
+        android:layout_toEndOf="@+id/aboutPic"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="@string/homePicture"/>
 
     <TextView
         android:id="@+id/tempData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="temp"
-        android:layout_marginVertical="50dp"
-        android:layout_marginHorizontal="65dp"
-        android:layout_below="@+id/label"
-        android:textSize="30sp"/>
-    <TextView
+        android:text="@string/tempData"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:layout_marginTop="35dp"
+        android:layout_toRightOf="@+id/temperaturePic"
+        android:layout_toEndOf="@+id/temperaturePic"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp" />
+
+    <ImageView
+        android:id="@+id/temperaturePic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/humidData"
-        android:text="humid"
-        android:textSize="30sp"
-        android:layout_below="@+id/label2"
-        android:layout_marginHorizontal="260dp"
-        android:layout_marginVertical="50dp"
-        />
+        android:src="@drawable/temp"
+        android:layout_toRightOf="@+id/homePic"
+        android:layout_toEndOf="@+id/homePic"
+        android:contentDescription="@string/temperature"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"/>
+
     <TextView
-        android:id="@+id/heatData"
+        android:id="@+id/temperatureText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="heat"
-        android:layout_marginVertical="30dp"
-        android:layout_marginHorizontal="65dp"
-        android:layout_below="@+id/tempData"
-        android:textSize="30sp"/>
+        android:text="@string/temperature"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_below="@+id/temperaturePic"
+        android:layout_toRightOf="@id/homePic"
+        android:layout_toEndOf="@id/homePic"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp" />
+
     <TextView
+        android:id="@+id/humidityData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/soilData"
-        android:text="soil"
-        android:textSize="30sp"
-        android:layout_below="@+id/humidData"
-        android:layout_marginHorizontal="280dp"
-        android:layout_marginVertical="30dp"
-        />
+        android:text="@string/humidityData"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:layout_below="@+id/temperatureText"
+        android:layout_toRightOf="@+id/humidityPic"
+        android:layout_toEndOf="@+id/humidityPic"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp" />
+
+    <ImageView
+        android:id="@+id/humidityPic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/humidity"
+        android:layout_toRightOf="@id/homePic"
+        android:layout_toEndOf="@id/homePic"
+        android:layout_below="@+id/temperatureText"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/humidity"
+         />
+
+    <TextView
+        android:id="@+id/humidityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/humidity"
+        android:textSize="15sp"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:layout_below="@+id/humidityPic"
+        android:layout_toRightOf="@+id/homePic"
+        android:layout_toEndOf="@+id/homePic"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp" />
+
+    <TextView
+        android:id="@+id/soilMoistureData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/soilMoistureData"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:layout_toRightOf="@+id/soilMoisturePic"
+        android:layout_toEndOf="@+id/soilMoisturePic"
+        android:layout_below="@+id/humidityText"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp" />
+
+    <ImageView
+        android:id="@+id/soilMoisturePic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/soil1"
+        android:layout_toRightOf="@+id/homePic"
+        android:layout_toEndOf="@+id/homePic"
+        android:layout_below="@+id/humidityText"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginStart="33dp"
+        android:contentDescription="@string/soil_moisture" />
+
+    <TextView
+        android:id="@+id/soilMoistureText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/soil_moisture"
+        android:textSize="15sp"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/homePic"
+        android:layout_toEndOf="@+id/homePic"
+        android:layout_below="@+id/soilMoisturePic"
+        android:layout_marginLeft="13dp"
+        android:layout_marginStart="13dp" />
+
+
+    <ImageView
+        android:id="@+id/power_off_1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/power_off"
+        android:layout_below="@+id/lightText"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/aboutPic"
+        android:visibility="visible"
+        android:layout_toEndOf="@+id/aboutPic"
+        android:layout_marginLeft="38dp"
+        android:layout_marginStart="38dp"
+        android:contentDescription="@string/off"/>
+
+    <ImageView
+        android:id="@+id/power_on_1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/power_on"
+        android:layout_below="@+id/lightText"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/aboutPic"
+        android:visibility="gone"
+        android:layout_toEndOf="@+id/aboutPic"
+        android:layout_marginLeft="38dp"
+        android:layout_marginStart="38dp"
+        android:contentDescription="@string/on"/>
+
+    <ImageView
+        android:id="@+id/lightPic"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/off"
+        android:layout_below="@+id/homePic"
+        android:layout_toRightOf="@+id/aboutPic"
+        android:layout_toEndOf="@+id/aboutPic"
+        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/lights" />
+
+    <TextView
+        android:id="@+id/lightText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lights"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:layout_toRightOf="@+id/aboutPic"
+        android:layout_toEndOf="@+id/aboutPic"
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_below="@+id/lightPic"/>
+
+    <TextView
+        android:id="@+id/fanText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fan"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:textSize="15sp"
+        android:layout_toRightOf="@+id/lightText"
+        android:layout_toEndOf="@+id/lightText"
+        android:layout_marginLeft="70dp"
+        android:layout_marginStart="70dp"
+        android:layout_below="@+id/fanPic"/>
+
+    <ImageView
+        android:id="@+id/fanPic"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/exhaust"
+        android:layout_below="@+id/homePic"
+        android:layout_toRightOf="@id/lightPic"
+        android:layout_toEndOf="@id/lightPic"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="10dp"
+        android:contentDescription="@string/fan" />
+
+    <ImageView
+        android:id="@+id/power_off_2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/power_off"
+        android:layout_below="@+id/fanText"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/lightText"
+        android:visibility="visible"
+        android:layout_toEndOf="@+id/lightText"
+        android:layout_marginLeft="65dp"
+        android:layout_marginStart="65dp"
+        android:contentDescription="@string/off"/>
+
+    <ImageView
+        android:id="@+id/power_on_2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/power_on"
+        android:layout_below="@+id/fanText"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/lightText"
+        android:visibility="gone"
+        android:layout_toEndOf="@+id/lightText"
+        android:layout_marginLeft="65dp"
+        android:layout_marginStart="65dp"
+        android:contentDescription="@string/on"/>
+
+
+    <TextView
+        android:id="@+id/sprinklerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sprinkler"
+        android:textSize="15sp"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/fanText"
+        android:layout_toEndOf="@+id/fanText"
+        android:layout_marginLeft="70dp"
+        android:layout_marginStart="70dp"
+        android:layout_below="@+id/sprinklerPic"/>
+
+    <ImageView
+        android:id="@+id/sprinklerPic"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/sprinkler"
+        android:layout_below="@+id/homePic"
+        android:layout_toRightOf="@+id/fanPic"
+        android:layout_toEndOf="@+id/fanPic"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/sprinkler" />
+
+    <ImageView
+        android:id="@+id/power_off_3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/power_off"
+        android:layout_below="@+id/sprinklerText"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/fanText"
+        android:visibility="visible"
+        android:layout_toEndOf="@+id/fanText"
+        android:layout_marginLeft="85dp"
+        android:layout_marginStart="85dp"
+        android:contentDescription="@string/off"/>
+
+    <ImageView
+        android:id="@+id/power_on_3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/power_on"
+        android:layout_below="@+id/sprinklerText"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/fanText"
+        android:visibility="gone"
+        android:layout_toEndOf="@+id/fanText"
+        android:layout_marginLeft="85dp"
+        android:layout_marginStart="85dp"
+        android:contentDescription="@string/on"/>
+
+    <TextView
+        android:id="@+id/streamText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stream"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:textSize="15sp"
+        android:layout_below="@+id/streamPic"
+        android:layout_toRightOf="@+id/sprinklerText"
+        android:layout_toEndOf="@+id/sprinklerText"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp" />
+
+    <ImageView
+        android:id="@+id/streamPic"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/visual"
+        android:layout_below="@+id/homePic"
+        android:layout_toRightOf="@+id/sprinklerPic"
+        android:layout_toEndOf="@+id/sprinklerPic"
+        android:layout_marginLeft="55dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/stream" />
+
+    <ImageView
+        android:id="@+id/power_off_4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/power_off"
+        android:layout_below="@+id/streamText"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/sprinklerText"
+        android:visibility="visible"
+        android:layout_toEndOf="@+id/sprinklerText"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:contentDescription="@string/off"/>
+
+    <ImageView
+        android:id="@+id/power_on_4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/power_on"
+        android:layout_below="@+id/streamText"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/sprinklerText"
+        android:visibility="gone"
+        android:layout_toEndOf="@+id/sprinklerText"
+        android:layout_marginLeft="50dp"
+        android:layout_marginStart="50dp"
+        android:contentDescription="@string/on"/>
+
 
 </RelativeLayout>

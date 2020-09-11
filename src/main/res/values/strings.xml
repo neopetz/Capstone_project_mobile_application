@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">led</string>
+    <string name="smart_greenhouse">Smart GreenHouse</string>
+    <string name="username">Username:</string>
+    <string name="password">Password:</string>
+    <string name="user">Enter your Username</string>
+    <string name="pass">Enter your Password</string>
+    <string name="btnName">LOGIN</string>
+    <string name="forgot">Forgot your Password?</string>
+    <string name="homePicture">homePicture</string>
+    <string name="setting">Setting</string>
+    <string name="account">Account</string>
+    <string name="about">About</string>
+    <string name="lights">Lights</string>
+    <string name="temperature">Temperature</string>
+    <string name="humidity">Humidity</string>
+    <string name="soil_moisture">Soil Moisture</string>
+    <string name="fan">Fan</string>
+    <string name="sprinkler">Sprinkler</string>
+    <string name="stream">Stream</string>
+    <string name="tempData">00.00 °C</string>
+    <string name="humidityData">00.00 %</string>
+    <string name="soilMoistureData">00.00 %</string>
+    <string name="off">OFF</string>
+    <string name="capstone_project">Capstone Project</string>
+    <string name="developer">Developed by: BSIT 4A2</string>
+    <string name="on">ON</string>
+    <string name="fan_speed">Fan Speed :</string>
+    <string name="fan_timer">Fan Timer :</string>
+    <string name="reset">RESET</string>
+    <string name="save">save</string>
+    <string name="enter_the_fan_speed">Enter the Fan Speed</string>
+    <string name="enter_the_fan_timer">Enter the Fan Timer</string>
+    <string name="fan_setting">Fan Setting</string>
+    <string name="fanDataSpeed">0</string>
+    <string name="fanDataTimer">0</string>
 </resources>
