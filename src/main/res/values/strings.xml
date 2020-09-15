@@ -34,4 +34,9 @@
     <string name="fan_setting">Fan Setting</string>
     <string name="fanDataSpeed">0</string>
     <string name="fanDataTimer">0</string>
+    <string name="sprinklerDataSpeed">0</string>
+    <string name="sprinklerDataTimer">0</string>
+    <string name="sprinkler_setting">Sprinkler Setting</string>
+    <string name="sprinkler_speed">Sprinkler Speed</string>
+    <string name="sprinkler_timer">Sprinkler Timer</string>
 </resources>

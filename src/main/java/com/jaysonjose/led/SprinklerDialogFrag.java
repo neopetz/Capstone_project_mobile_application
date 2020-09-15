@@ -13,23 +13,25 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
-public class FanDialogFrag extends DialogFragment {
+public class SprinklerDialogFrag extends DialogFragment {
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fan_fragment,null);
+        View view = inflater.inflate(R.layout.sprinkler_fragment,null);
 
-        Button btnSave = view.findViewById(R.id.btnSave);
-        final TextView fanDataSpeed =  view.findViewById(R.id.fanDataSpeed);
-        final TextView fanDataTimer =  view.findViewById(R.id.fanDataTimer);
-        SeekBar fanSpeedSeekBar =  view.findViewById(R.id.fanSpeedSeekBar);
-        SeekBar fanTimerSeekBar =  view.findViewById(R.id.fanTimerSeekBar);
 
-        fanSpeedSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        Button btnSaveSprinkler = view.findViewById(R.id.btnSaveSprinkler);
+        final TextView sprinklerDataSpeed =  view.findViewById(R.id.sprinklerDataSpeed);
+        final TextView sprinklerDataTimer =  view.findViewById(R.id.sprinklerDataTimer);
+        SeekBar sprinklerSpeedSeekBar =  view.findViewById(R.id.sprinklerSpeedSeekBar);
+        SeekBar sprinklerTimerSeekBar =  view.findViewById(R.id.sprinklerTimerSeekBar);
+
+        sprinklerSpeedSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-                fanDataSpeed.setText("" +progress);
+                sprinklerDataSpeed.setText("" +progress);
             }
 
             @Override
@@ -44,10 +46,10 @@ public class FanDialogFrag extends DialogFragment {
         });
 
 
-        fanTimerSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        sprinklerTimerSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                fanDataTimer.setText(""+progress);
+                sprinklerDataTimer.setText(""+progress);
             }
 
             @Override
@@ -62,7 +64,7 @@ public class FanDialogFrag extends DialogFragment {
         });
 
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
+        btnSaveSprinkler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(),"Save Successfully ",Toast.LENGTH_SHORT).show();
@@ -70,15 +72,6 @@ public class FanDialogFrag extends DialogFragment {
             }
         });
 
-        return  view;
+        return view;
     }
-
 }
-
-
-
-
-
-
-
-

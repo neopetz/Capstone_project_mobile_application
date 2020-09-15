@@ -7,6 +7,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,12 +23,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.w3c.dom.Text;
+
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button btnLogin;
+    private TextToSpeech mTTS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +42,52 @@ public class MainActivity extends AppCompatActivity {
 
         btnLogin = findViewById(R.id.btnLogin);
 
+
+        mTTS = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if(status == TextToSpeech.SUCCESS){
+                    int result = mTTS.setLanguage(Locale.US);
+                    if(result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED){
+                    //    Toast.makeText(MainActivity.this,"language not supported ",Toast.LENGTH_SHORT).show();
+                    }else{
+                      //  Toast.makeText(MainActivity.this,"language success ",Toast.LENGTH_SHORT).show();
+                    }
+
+                }else {
+                    //Toast.makeText(MainActivity.this,"Invalid Initialization ",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         login();
     }
+
+
 
 
     void login(){
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,MainActivity2.class);
+                String text = "welcome to smart greenhouse monitoring system";
+                mTTS.setPitch(0.9f);
+                mTTS.setSpeechRate(0.9f);
+                mTTS.speak(text, TextToSpeech.QUEUE_FLUSH,null);
+               Intent intent = new Intent(MainActivity.this,MainActivity2.class);
                 startActivity(intent);
             }
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+
+        if(mTTS != null){
+            mTTS.stop();
+            mTTS.shutdown();
+        }
+    }
 }
 

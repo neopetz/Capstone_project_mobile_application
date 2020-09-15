@@ -7,99 +7,99 @@
 
 
     <TextView
-        android:id="@+id/fanSettingText"
+        android:id="@+id/sprinklerSettingText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fan_setting"
+        android:text="@string/sprinkler_setting"
         android:textSize="30sp"
         android:textColor="@color/colorBlack"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/fanSpeedText"
+        android:id="@+id/sprinklerSpeedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fan_speed"
+        android:text="@string/sprinkler_speed"
         android:textStyle="bold"
         android:textColor="@color/colorBlack"
         android:textSize="15sp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/fanSettingText"
+        android:layout_below="@+id/sprinklerSettingText"
         android:layout_marginTop="25dp"/>
 
     <TextView
-        android:id="@+id/fanDataSpeed"
+        android:id="@+id/sprinklerDataSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fanDataSpeed"
+        android:text="@string/sprinklerDataSpeed"
         android:textSize="15sp"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
-        android:layout_below="@+id/fanSettingText"
-        android:layout_toRightOf="@+id/fanSpeedText"
-        android:layout_toEndOf="@+id/fanSpeedText"
+        android:layout_below="@+id/sprinklerSettingText"
+        android:layout_toRightOf="@+id/sprinklerSpeedText"
+        android:layout_toEndOf="@+id/sprinklerSpeedText"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp" />
 
     <SeekBar
-        android:id="@+id/fanSpeedSeekBar"
+        android:id="@+id/sprinklerSpeedSeekBar"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:max="100"
-        android:layout_below="@+id/fanSettingText"
-        android:layout_toRightOf="@+id/fanDataSpeed"
-        android:layout_toEndOf="@+id/fanDataSpeed"
+        android:layout_below="@+id/sprinklerSettingText"
+        android:layout_toRightOf="@+id/sprinklerDataSpeed"
+        android:layout_toEndOf="@+id/sprinklerDataSpeed"
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
         android:layout_marginTop="30dp"/>
 
     <TextView
-        android:id="@+id/fanTimerText"
+        android:id="@+id/sprinklerTimerText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fan_timer"
+        android:text="@string/sprinkler_timer"
         android:textStyle="bold"
         android:textSize="15sp"
         android:textColor="@color/colorBlack"
-        android:layout_below="@id/fanSpeedText"
+        android:layout_below="@id/sprinklerSpeedText"
         android:layout_marginTop="30dp"/>
 
     <TextView
-        android:id="@+id/fanDataTimer"
+        android:id="@+id/sprinklerDataTimer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/fanDataTimer"
+        android:text="@string/sprinklerDataTimer"
         android:textColor="@color/colorBlack"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:layout_below="@+id/fanDataSpeed"
-        android:layout_toRightOf="@+id/fanTimerText"
-        android:layout_toEndOf="@+id/fanTimerText"
+        android:layout_below="@+id/sprinklerDataSpeed"
+        android:layout_toRightOf="@+id/sprinklerTimerText"
+        android:layout_toEndOf="@+id/sprinklerTimerText"
         android:layout_marginLeft="13dp"
         android:layout_marginStart="13dp"
         android:layout_marginTop="30dp"/>
 
     <SeekBar
-        android:id="@+id/fanTimerSeekBar"
+        android:id="@+id/sprinklerTimerSeekBar"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
         android:max="100"
-        android:layout_below="@+id/fanSpeedSeekBar"
-        android:layout_toRightOf="@+id/fanDataTimer"
-        android:layout_toEndOf="@+id/fanDataTimer"
+        android:layout_below="@+id/sprinklerSpeedSeekBar"
+        android:layout_toRightOf="@+id/sprinklerDataTimer"
+        android:layout_toEndOf="@+id/sprinklerDataTimer"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"/>
 
     <Button
-        android:id="@+id/BtnReset"
+        android:id="@+id/BtnResetSprinkler"
         android:layout_width="70dp"
         android:layout_height="30dp"
         android:text="@string/reset"
-        android:layout_below="@id/fanTimerText"
+        android:layout_below="@id/sprinklerTimerText"
         android:background="@color/colorRed"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
@@ -108,18 +108,17 @@
         android:layout_marginStart="35dp" />
 
     <Button
-        android:id="@+id/btnSave"
+        android:id="@+id/btnSaveSprinkler"
         android:layout_width="70dp"
         android:layout_height="30dp"
         android:text="@string/save"
         android:textStyle="bold"
         android:textColor="@color/colorWhite"
         android:background="@color/colorGreen"
-        android:layout_below="@id/fanTimerText"
+        android:layout_below="@id/sprinklerTimerText"
         android:layout_marginTop="35dp"
-        android:layout_toRightOf="@+id/BtnReset"
-        android:layout_toEndOf="@+id/BtnReset"
+        android:layout_toRightOf="@+id/BtnResetSprinkler"
+        android:layout_toEndOf="@+id/BtnResetSprinkler"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp" />
-
 </RelativeLayout>

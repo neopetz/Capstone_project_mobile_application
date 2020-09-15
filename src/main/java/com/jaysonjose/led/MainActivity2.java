@@ -7,9 +7,13 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -21,12 +25,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Locale;
+
 public class MainActivity2 extends AppCompatActivity {
 
-    private ImageView onLight,offLight,offFan,onFan,onSprinkler,offSprinkler,onStream,offStream,fanPic;
+    private ImageView onLight,offLight,offFan,onFan,onSprinkler,offSprinkler,onStream,offStream,fanPic,sprinklerPic;
+    private  ImageView temperaturePic,humidityPic,soilMoisturePic;
     private TextView tempData,humidData,heatData,soilData;
     private DatabaseReference rootDatabase;
-
+    private WebView visualStream;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +56,14 @@ public class MainActivity2 extends AppCompatActivity {
         soilData = findViewById(R.id.soilMoistureData);
 
         fanPic = findViewById(R.id.fanPic);
+        sprinklerPic = findViewById(R.id.sprinklerPic);
+        temperaturePic = findViewById(R.id.temperaturePic);
+        humidityPic = findViewById(R.id.humidityPic);
+        soilMoisturePic = findViewById(R.id.soilMoisturePic);
+        visualStream = findViewById(R.id.visualStream);
+
+
+
 
         rootDatabase = FirebaseDatabase.getInstance().getReference().child("user");
 
@@ -135,6 +150,7 @@ public class MainActivity2 extends AppCompatActivity {
                 rootDatabase.child("LedLight").setValue("ON");
 
 
+
             }
         });
 
@@ -144,6 +160,7 @@ public class MainActivity2 extends AppCompatActivity {
                 onLight.setVisibility(View.GONE);
                 offLight.setVisibility(View.VISIBLE);
                 rootDatabase.child("LedLight").setValue("OFF");
+
             }
         });
 
@@ -177,6 +194,7 @@ public class MainActivity2 extends AppCompatActivity {
                 onFan.setVisibility(View.VISIBLE);
                 rootDatabase.child("Fan").child("Power").setValue("ON");
 
+
             }
         });
 
@@ -187,6 +205,7 @@ public class MainActivity2 extends AppCompatActivity {
                 offFan.setVisibility(View.VISIBLE);
                 rootDatabase.child("Fan").child("Power").setValue("OFF");
 
+
             }
         });
 
@@ -195,6 +214,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 offSprinkler.setVisibility(View.GONE);
                 onSprinkler.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -203,6 +223,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 onSprinkler.setVisibility(View.GONE);
                 offSprinkler.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -211,6 +232,16 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 offStream.setVisibility(View.GONE);
                 onStream.setVisibility(View.VISIBLE);
+                visualStream.setWebViewClient(new WebViewClient());
+                WebSettings webSettings = visualStream.getSettings();
+                //webSettings.setBuiltInZoomControls(true);
+                visualStream.setInitialScale(10);
+                webSettings.setDefaultZoom(WebSettings.ZoomDensity.FAR);
+                webSettings.setUseWideViewPort(true);
+                webSettings.setJavaScriptEnabled(true);
+                visualStream.loadUrl("http://192.168.254.125");
+                visualStream.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -219,6 +250,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 onStream.setVisibility(View.GONE);
                 offStream.setVisibility(View.VISIBLE);
+                visualStream.setVisibility(View.GONE);
             }
         });
 
@@ -226,12 +258,45 @@ public class MainActivity2 extends AppCompatActivity {
         fanPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
               FanDialogFrag fanDialogFrag = new FanDialogFrag();
               fanDialogFrag.show(getSupportFragmentManager(),"FanDialog");
 
             }
         });
 
+        sprinklerPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                SprinklerDialogFrag sprinklerDialogFrag = new SprinklerDialogFrag();
+                sprinklerDialogFrag.show(getSupportFragmentManager(),"SprinklerDialog");
+            }
+        });
+
+
+        temperaturePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        humidityPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        soilMoisturePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
     }
+
+
 }

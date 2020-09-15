@@ -451,5 +451,14 @@
         android:layout_marginStart="50dp"
         android:contentDescription="@string/on"/>
 
+    <WebView
+        android:id="@+id/visualStream"
+        android:layout_width="370dp"
+        android:layout_height="220dp"
+        android:layout_marginLeft="95dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"/>
+
 
 </RelativeLayout>
