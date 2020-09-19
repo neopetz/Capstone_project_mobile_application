@@ -48,7 +48,7 @@
         android:id="@+id/sprinklerSpeedSeekBar"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:max="100"
+        android:max="255"
         android:layout_below="@+id/sprinklerSettingText"
         android:layout_toRightOf="@+id/sprinklerDataSpeed"
         android:layout_toEndOf="@+id/sprinklerDataSpeed"
@@ -86,7 +86,7 @@
         android:id="@+id/sprinklerTimerSeekBar"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:max="100"
+        android:max="255"
         android:layout_below="@+id/sprinklerSpeedSeekBar"
         android:layout_toRightOf="@+id/sprinklerDataTimer"
         android:layout_toEndOf="@+id/sprinklerDataTimer"
@@ -95,7 +95,7 @@
         android:layout_marginTop="30dp"/>
 
     <Button
-        android:id="@+id/BtnResetSprinkler"
+        android:id="@+id/btnResetSprinkler"
         android:layout_width="70dp"
         android:layout_height="30dp"
         android:text="@string/reset"
@@ -117,8 +117,8 @@
         android:background="@color/colorGreen"
         android:layout_below="@id/sprinklerTimerText"
         android:layout_marginTop="35dp"
-        android:layout_toRightOf="@+id/BtnResetSprinkler"
-        android:layout_toEndOf="@+id/BtnResetSprinkler"
+        android:layout_toRightOf="@+id/btnResetSprinkler"
+        android:layout_toEndOf="@+id/btnResetSprinkler"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp" />
 </RelativeLayout>

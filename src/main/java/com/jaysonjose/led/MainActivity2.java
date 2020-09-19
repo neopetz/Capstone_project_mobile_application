@@ -2,36 +2,28 @@ package com.jaysonjose.led;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.speech.tts.TextToSpeech;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Locale;
 
 public class MainActivity2 extends AppCompatActivity {
 
-    private ImageView onLight,offLight,offFan,onFan,onSprinkler,offSprinkler,onStream,offStream,fanPic,sprinklerPic;
-    private  ImageView temperaturePic,humidityPic,soilMoisturePic;
-    private TextView tempData,humidData,heatData,soilData;
+    ImageView onLight,offLight,offFan,onFan,onSprinkler,offSprinkler,onStream,offStream,fanPic,sprinklerPic;
+    ImageView temperaturePic,humidityPic,soilMoisturePic;
+    private TextView tempData,humidData,soilData;
     private DatabaseReference rootDatabase;
     private WebView visualStream;
     @Override
@@ -63,11 +55,23 @@ public class MainActivity2 extends AppCompatActivity {
         visualStream = findViewById(R.id.visualStream);
 
 
+        rootDatabase = FirebaseDatabase.getInstance().getReference().child("user").child("smart123456");
+
+           monitoring();
+           lights();
+           fan();
+           sprinkler();
+           stream();
+           settingConfigFragment();
+
+    }
 
 
-        rootDatabase = FirebaseDatabase.getInstance().getReference().child("user");
 
-        rootDatabase.child("Temperature").addValueEventListener(new ValueEventListener() {
+
+    void monitoring(){
+
+        rootDatabase.child("monitoring").child("temperature").addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -85,7 +89,7 @@ public class MainActivity2 extends AppCompatActivity {
         });
 
 
-        rootDatabase.child("Humidity").addValueEventListener(new ValueEventListener() {
+        rootDatabase.child("monitoring").child("humidity").addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -103,7 +107,7 @@ public class MainActivity2 extends AppCompatActivity {
         });
 
 
-        rootDatabase.child("Soil_Moisture").addValueEventListener(new ValueEventListener() {
+        rootDatabase.child("monitoring").child("soil").addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -120,8 +124,11 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
+    }
 
-        rootDatabase.child("LedLight").addValueEventListener(new ValueEventListener() {
+    void lights(){
+
+        rootDatabase.child("control").child("lights").child("status").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
@@ -147,7 +154,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 offLight.setVisibility(View.GONE);
                 onLight.setVisibility(View.VISIBLE);
-                rootDatabase.child("LedLight").setValue("ON");
+                rootDatabase.child("control").child("lights").child("status").setValue("ON");
 
 
 
@@ -159,14 +166,16 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 onLight.setVisibility(View.GONE);
                 offLight.setVisibility(View.VISIBLE);
-                rootDatabase.child("LedLight").setValue("OFF");
+                rootDatabase.child("control").child("lights").child("status").setValue("OFF");
 
             }
         });
 
+    }
 
+    void fan(){
 
-        rootDatabase.child("Fan").child("Power").addValueEventListener(new ValueEventListener() {
+        rootDatabase.child("control").child("fan").child("status").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
@@ -192,7 +201,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 offFan.setVisibility(View.GONE);
                 onFan.setVisibility(View.VISIBLE);
-                rootDatabase.child("Fan").child("Power").setValue("ON");
+                rootDatabase.child("control").child("fan").child("status").setValue("ON");
 
 
             }
@@ -203,8 +212,33 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 onFan.setVisibility(View.GONE);
                 offFan.setVisibility(View.VISIBLE);
-                rootDatabase.child("Fan").child("Power").setValue("OFF");
+                rootDatabase.child("control").child("fan").child("status").setValue("OFF");
 
+
+            }
+        });
+
+    }
+
+    void sprinkler(){
+
+        rootDatabase.child("control").child("sprinkler").child("status").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    String data1 = snapshot.getValue().toString();
+                    if(data1.equals("OFF")){
+                        onSprinkler.setVisibility(View.GONE);
+                        offSprinkler.setVisibility(View.VISIBLE);
+                    }else{
+                        offSprinkler.setVisibility(View.GONE);
+                        onSprinkler.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
@@ -214,6 +248,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 offSprinkler.setVisibility(View.GONE);
                 onSprinkler.setVisibility(View.VISIBLE);
+                rootDatabase.child("control").child("sprinkler").child("status").setValue("ON");
 
             }
         });
@@ -223,9 +258,14 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 onSprinkler.setVisibility(View.GONE);
                 offSprinkler.setVisibility(View.VISIBLE);
+                rootDatabase.child("control").child("sprinkler").child("status").setValue("OFF");
 
             }
         });
+
+    }
+
+    void stream(){
 
         offStream.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -253,14 +293,16 @@ public class MainActivity2 extends AppCompatActivity {
                 visualStream.setVisibility(View.GONE);
             }
         });
+    }
 
+    void settingConfigFragment(){
 
         fanPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-              FanDialogFrag fanDialogFrag = new FanDialogFrag();
-              fanDialogFrag.show(getSupportFragmentManager(),"FanDialog");
+                FanDialogFrag fanDialogFrag = new FanDialogFrag();
+                fanDialogFrag.show(getSupportFragmentManager(),"FanDialog");
 
             }
         });

@@ -13,6 +13,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class SprinklerDialogFrag extends DialogFragment {
 
     @Nullable
@@ -20,12 +26,49 @@ public class SprinklerDialogFrag extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.sprinkler_fragment,null);
 
+        final DatabaseReference rootDatabase;
 
         Button btnSaveSprinkler = view.findViewById(R.id.btnSaveSprinkler);
+        Button btnResetSprinkler = view.findViewById(R.id.btnResetSprinkler);
+
+
         final TextView sprinklerDataSpeed =  view.findViewById(R.id.sprinklerDataSpeed);
         final TextView sprinklerDataTimer =  view.findViewById(R.id.sprinklerDataTimer);
-        SeekBar sprinklerSpeedSeekBar =  view.findViewById(R.id.sprinklerSpeedSeekBar);
-        SeekBar sprinklerTimerSeekBar =  view.findViewById(R.id.sprinklerTimerSeekBar);
+        final SeekBar sprinklerSpeedSeekBar =  view.findViewById(R.id.sprinklerSpeedSeekBar);
+        final SeekBar sprinklerTimerSeekBar =  view.findViewById(R.id.sprinklerTimerSeekBar);
+
+        rootDatabase = FirebaseDatabase.getInstance().getReference().child("user").child("smart123456");
+
+
+        rootDatabase.child("control").child("sprinkler").child("flow").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    int speedData = Integer.parseInt(snapshot.getValue().toString());
+                    sprinklerSpeedSeekBar.setProgress(speedData);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        rootDatabase.child("control").child("sprinkler").child("time").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    int timeData = Integer.parseInt(snapshot.getValue().toString());
+                    sprinklerTimerSeekBar.setProgress(timeData);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         sprinklerSpeedSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -67,8 +110,26 @@ public class SprinklerDialogFrag extends DialogFragment {
         btnSaveSprinkler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String sprinklerSpeed = sprinklerDataSpeed.getText().toString();
+                String sprinklerTimer = sprinklerDataTimer.getText().toString();
+
+                rootDatabase.child("control").child("sprinkler").child("flow").setValue(""+sprinklerSpeed);
+                rootDatabase.child("control").child("sprinkler").child("time").setValue(""+sprinklerTimer);
+
                 Toast.makeText(getActivity(),"Save Successfully ",Toast.LENGTH_SHORT).show();
                 dismiss();
+            }
+        });
+
+        btnResetSprinkler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sprinklerDataSpeed.setText("0");
+                sprinklerDataTimer.setText("0");
+                sprinklerSpeedSeekBar.setProgress(0);
+                sprinklerTimerSeekBar.setProgress(0);
             }
         });
 

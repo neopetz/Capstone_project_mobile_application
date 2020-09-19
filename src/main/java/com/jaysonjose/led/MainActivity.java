@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnLogin;
     private TextToSpeech mTTS;
+    private DatabaseReference rootDatabase;
+    private TextView userText,passText;
+    String username="",dbPassword="none",password="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
+
+        rootDatabase = FirebaseDatabase.getInstance().getReference().child("user");
         btnLogin = findViewById(R.id.btnLogin);
+        userText = findViewById(R.id.userText);
+        passText = findViewById(R.id.passText);
+
 
 
         mTTS = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
@@ -59,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+
+
+
+
         login();
     }
 
@@ -69,12 +82,21 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String text = "welcome to smart greenhouse monitoring system";
-                mTTS.setPitch(0.9f);
-                mTTS.setSpeechRate(0.9f);
-                mTTS.speak(text, TextToSpeech.QUEUE_FLUSH,null);
-               Intent intent = new Intent(MainActivity.this,MainActivity2.class);
-                startActivity(intent);
+
+                username = userText.getText().toString();
+                password = passText.getText().toString();
+
+
+
+                            String text = "welcome to smart greenhouse monitoring system";
+                           mTTS.setPitch(0.9f);
+                           mTTS.setSpeechRate(0.9f);
+                            mTTS.speak(text, TextToSpeech.QUEUE_FLUSH,null);
+                            Intent intent = new Intent(MainActivity.this,MainActivity2.class);
+                            startActivity(intent);
+
+
+
             }
         });
     }

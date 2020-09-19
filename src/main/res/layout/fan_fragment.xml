@@ -48,7 +48,7 @@
         android:id="@+id/fanSpeedSeekBar"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:max="100"
+        android:max="255"
         android:layout_below="@+id/fanSettingText"
         android:layout_toRightOf="@+id/fanDataSpeed"
         android:layout_toEndOf="@+id/fanDataSpeed"
@@ -86,7 +86,7 @@
         android:id="@+id/fanTimerSeekBar"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:max="100"
+        android:max="255"
         android:layout_below="@+id/fanSpeedSeekBar"
         android:layout_toRightOf="@+id/fanDataTimer"
         android:layout_toEndOf="@+id/fanDataTimer"
@@ -95,7 +95,7 @@
         android:layout_marginTop="30dp"/>
 
     <Button
-        android:id="@+id/BtnReset"
+        android:id="@+id/btnReset"
         android:layout_width="70dp"
         android:layout_height="30dp"
         android:text="@string/reset"
@@ -117,8 +117,8 @@
         android:background="@color/colorGreen"
         android:layout_below="@id/fanTimerText"
         android:layout_marginTop="35dp"
-        android:layout_toRightOf="@+id/BtnReset"
-        android:layout_toEndOf="@+id/BtnReset"
+        android:layout_toRightOf="@+id/btnReset"
+        android:layout_toEndOf="@+id/btnReset"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp" />
 
